@@ -2,8 +2,6 @@ const int trigger_pin1 = 4;
 const int echo_pin1 = 3;
 const int trigger_pin2 = 6;
 const int echo_pin2 = 5;
-const int trigger_pin3 =8;
-const int echo_pin3 = 7;
 const int ldr1 = A1;
 const int ldr2 = A2;
 int role=2;
@@ -11,8 +9,6 @@ int sure1;
 int mesafe1;
 int sure2;
 int mesafe2;
-int sure3;
-int mesafe3;
 int isik1;
 int isik2;
 
@@ -25,8 +21,6 @@ void setup() {
   pinMode(echo_pin1, INPUT);
   pinMode(trigger_pin2, OUTPUT);
   pinMode(echo_pin2, INPUT);
-  pinMode(trigger_pin3, OUTPUT);
-  pinMode(echo_pin3, INPUT);
   Serial.begin(9600);
   digitalWrite(role, HIGH);
 }
@@ -42,11 +36,6 @@ void loop() {
   digitalWrite(trigger_pin2, LOW);
   sure2 = pulseIn(echo_pin2, HIGH);
   mesafe2 = (sure2 / 2) / 28.5;
-  digitalWrite(trigger_pin3, HIGH);      //3.HC-SR04
-  delayMicroseconds(1000);
-  digitalWrite(trigger_pin3, LOW);
-  sure3 = pulseIn(echo_pin3, HIGH);
-  mesafe3 = (sure3 / 2) / 28.5;
   {
  isik1 = analogRead(ldr1);
   Serial.println(isik1);

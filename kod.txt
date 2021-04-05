@@ -11,8 +11,6 @@ int sure1;
 int mesafe1;
 int sure2;
 int mesafe2;
-int sure3;
-int mesafe3;
 int isik1;
 int isik2;
 
@@ -25,8 +23,6 @@ void setup() {
   pinMode(echo_pin1, INPUT);
   pinMode(trigger_pin2, OUTPUT);
   pinMode(echo_pin2, INPUT);
-  pinMode(trigger_pin3, OUTPUT);
-  pinMode(echo_pin3, INPUT);
   Serial.begin(9600);
   digitalWrite(role, HIGH);
 }
@@ -42,11 +38,6 @@ void loop() {
   digitalWrite(trigger_pin2, LOW);
   sure2 = pulseIn(echo_pin2, HIGH);
   mesafe2 = (sure2 / 2) / 28.5;
-  digitalWrite(trigger_pin3, HIGH);      //3.HC-SR04
-  delayMicroseconds(1000);
-  digitalWrite(trigger_pin3, LOW);
-  sure3 = pulseIn(echo_pin3, HIGH);
-  mesafe3 = (sure3 / 2) / 28.5;
   {
  isik1 = analogRead(ldr1);
   Serial.println(isik1);
@@ -56,28 +47,28 @@ void loop() {
    
    if(isik1>=450)
   {
-    digitalWrite(role,HIGH); 
+    digitalWrite(role,LOW); 
   }
     if(isik1<=250)
     {
   if (mesafe2 <= 70)
   {
-    digitalWrite(role, LOW);
+    digitalWrite(role, HIGH);
     delay(20000);
-    digitalWrite(role,HIGH); 
+    digitalWrite(role,LOW); 
   }
     delay(10);
     }
   else
   if(isik2>=450)
   {
-    digitalWrite(role,HIGH); 
+    digitalWrite(role,LOW); 
   }
     if(isik2<=250)
     {
     if (mesafe1 <= 125)
   {
-    digitalWrite(role, LOW);
+    digitalWrite(role,HIGH);
     delay(20000);
-    digitalWrite(role,HIGH); 
+    digitalWrite(role,LOW); 
     }}}}
